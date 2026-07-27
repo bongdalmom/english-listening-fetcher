@@ -1,0 +1,38 @@
+name: Daily English Listening Fetch
+
+on:
+  schedule:
+    # UTC 기준 21:00 = 한국시간(KST) 06:00 (다음날)
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+    # Actions 탭에서 수동으로도 실행할 수 있게 해줌 (테스트용)
+
+permissions:
+  contents: write
+  # result.json을 저장소에 다시 커밋하려면 쓰기 권한이 필요함
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 저장소 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 라이브러리 설치
+        run: pip install -r requirements.txt
+
+      - name: 스크립트 실행
+        run: python fetch.py
+
+      - name: result.json 커밋 및 푸시
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add result.json
+          git commit -m "Update result.json ($(date -u +%Y-%m-%d))" || echo "변경사항 없음, 커밋 생략"
+          git push
