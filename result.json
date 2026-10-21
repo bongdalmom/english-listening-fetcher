@@ -1,11 +1,7 @@
 {
-  "updated_at": "2026-10-20T23:40:17.762677+00:00",
-  "results": {
-    "bbc_6min": {
-      "episode_url": "https://www.bbc.co.uk/learningenglish/english/features/6-minute-english_2026/ep-261015",
-      "audio_url": "https://downloads.bbc.co.uk/learningenglish/features/6min/261015_6_minute_english_why_do_people_buy_gold_download.mp3",
-      "transcript_pdf_url": "https://downloads.bbc.co.uk/learningenglish/features/6min/261015_6_minute_english_why_do_people_buy_gold_worksheet.pdf"
-    }
-  },
-  "errors": {}
+  "updated_at": "2026-10-21T23:55:32.384531+00:00",
+  "results": {},
+  "errors": {
+    "bbc_6min": "에피소드 링크를 찾지 못했습니다. 선택자를 확인하세요."
+  }
 }
